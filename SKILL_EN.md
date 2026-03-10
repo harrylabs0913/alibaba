@@ -21,11 +21,11 @@ Alibaba is a powerful CLI tool designed for interacting with the Taobao e-commer
 ## Installation
 
 ```bash
-# Install the ecommerce-core dependency first
-pip install -r ../ecommerce-core/requirements.txt
+# Install dependencies
+pip install -r requirements.txt
 
-# Install the Alibaba skill
-pip install -e .
+# Install browser
+playwright install chromium
 ```
 
 ## Usage
@@ -131,13 +131,12 @@ alibaba login
 
 | Data Type | Location |
 |-----------|----------|
-| Session Tokens | `~/.openclaw/data/ecommerce/auth.db` |
-| Search Cache | `~/.openclaw/data/ecommerce/ecommerce.db` |
+| Session Tokens | `~/.openclaw/data/alibaba/cookies.json` |
+| Search Cache | `~/.openclaw/data/alibaba/alibaba.db` |
 
 ### Dependencies
 
-- `ecommerce-core` framework (required)
-- Browser automation with anti-detection capabilities
+- `playwright>=1.40.0` - Browser automation
 - SQLite for data persistence
 
 ### Platform Notes

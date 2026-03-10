@@ -38,7 +38,7 @@ Query available coupons.
 
 ## Dependencies
 
-Requires `ecommerce-core` framework.
+- `playwright>=1.40.0` - Browser automation
 
 ## Data Storage
 
