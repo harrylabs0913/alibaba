@@ -6,25 +6,25 @@ CLI tool for Taobao e-commerce platform.
 
 ### Search Products
 ```bash
-alibaba-ec search "运动鞋"
-alibaba-ec search "iPhone" --page 2 --limit 20
+alibaba-shopping search "运动鞋"
+alibaba-shopping search "iPhone" --page 2 --limit 20
 ```
 
 ### Login
 ```bash
-alibaba-ec login
+alibaba-shopping login
 ```
 g browser with QR code for authentication.
 
 ### Price Tracking
 ```bash
-alibaba-ec price <product-url>
+alibaba-shopping price <product-url>
 ```
 Shows current price and historical data.
 
 ### Coupons
 ```bash
-alibaba-ec coupon
+alibaba-shopping coupon
 ```
 Query available coupons.
 
@@ -42,8 +42,8 @@ Query available coupons.
 
 ## Data Storage
 
-- Sessions: `~/.openclaw/data/alibaba-ec/ookies.json`
-- Cache: `~/.openclaw/data/alibaba-ec/alibaba-ec.db`
+- Sessions: `~/.openclaw/data/alibaba-shopping/ookies.json`
+- Cache: `~/.openclaw/data/alibaba-shopping/alibaba-shopping.db`
 
 ## Security
 This skill uses browser automation for legitimate shopping assistance only.
