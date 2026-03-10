@@ -20,9 +20,9 @@ except ImportError:
     sys.exit(1)
 
 # 配置
-CONFIG_DIR = Path.home() / ".openclaw" / "data" / "alibaba_ec"
+CONFIG_DIR = Path.home() / ".openclaw" / "data" / "alibaba-ec"
 COOKIES_FILE = CONFIG_DIR / "cookies.json"
-DB_FILE = CONFIG_DIR / "alibaba_ec.db"
+DB_FILE = CONFIG_DIR / "alibaba-ec.db"
 CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
 @dataclass
