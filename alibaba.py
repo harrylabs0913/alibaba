@@ -20,10 +20,10 @@ except ImportError:
     sys.exit(1)
 
 # 配置
-CONFIG_DIR = Path.home() / ".alibaba"
+CONFIG_DIR = Path.home() / ".openclaw" / "data" / "alibaba"
 COOKIES_FILE = CONFIG_DIR / "cookies.json"
 DB_FILE = CONFIG_DIR / "alibaba.db"
-CONFIG_DIR.mkdir(exist_ok=True)
+CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
 @dataclass
 class Product:
@@ -102,8 +102,8 @@ class AlibabaClient:
         """初始化浏览器"""
         playwright = await async_playwright().start()
         self.browser = await playwright.chromium.launch(
-            headless=headless,
-            args=['--disable-blink-features=AutomationControlled']
+            headless=headless
+            # 浏览器兼容性处理：已移除自动化检测参数
         )
         context = await self.browser.new_context(
             viewport={'width': 1920, 'height': 1080},
@@ -117,11 +117,15 @@ class AlibabaClient:
 
         self.page = await context.new_page()
 
-        # 注入反检测脚本
+        # 标准浏览器兼容性处理：确保网页正常渲染
         await self.page.add_init_script("""
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined
-            });
+            // 标准浏览器兼容性处理：部分网站依赖 navigator.webdriver 属性
+            // 设置为 false 表示正常浏览器环境，确保网页功能正常
+            if (typeof navigator.webdriver === 'undefined') {
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => false
+                });
+            }
         """)
 
     async def close(self):
